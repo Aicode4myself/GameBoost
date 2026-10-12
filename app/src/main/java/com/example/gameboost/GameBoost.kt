@@ -120,14 +120,13 @@ class BoostActivity : Activity() {
         val scale = fmt(scaleBar.progress)
         val fps = fpsOptions[fpsSpinner.selectedItemPosition]
         runShell(
-            "cmd game set --mode performance --downscale $scale --fps $fps $pkg && cmd game mode performance $pkg",
-            "Applied: scale $scale, $fps FPS"
+            "cmd game set --mode 2 --downscale $scale --fps $fps $pkg && cmd game mode 2 $pkg",
         )
     }
 
     private fun resetSettings() {
         val pkg = currentPkg() ?: return
-        runShell("cmd game reset $pkg; cmd game mode standard $pkg", "Reset to default")
+        runShell("cmd game reset $pkg; cmd game mode 1 $pkg", "Reset to default")
     }
 
     private fun launchGame() {
